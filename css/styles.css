@@ -12,6 +12,8 @@
     --footer-link-color: rgba(255, 255, 255, 0.6);
     --border-color: #ececec;
     --description-color: #a8a8a8;
+    --label-background-color: rgba(33, 150, 243, 0.9);
+    --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html{
@@ -140,6 +142,16 @@ body {
 
 
 /* ===END LOGOTYPE===*/
+.current::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: var(--accent-color);
+    bottom: 0;
+    border-radius: 2px;
+}
 
 .menu{
     display: flex;
@@ -179,6 +191,7 @@ body {
 
     color: var(--main-color);
     position: relative;
+    transition: color var(--animation);
 }
 .menu-link:hover,
 .menu-link:focus{
@@ -196,6 +209,7 @@ body {
     line-height: 1.14;
     letter-spacing: 0.02em;
     color: var(--p-text-color);
+    transition: color var(--animation);
 }
 
 .mail-link:hover,
@@ -205,6 +219,14 @@ body {
     .tel-link:hover,
     .tel-link:focus{
     color: var(--accent-color);
+}
+.mail-link:hover,
+.mail-link:focus{
+    fill: var(--accent-color);
+}
+    .tel-link:hover,
+    .tel-link:focus{
+    fill: var(--accent-color);
 }
 .icon-contacts{
     margin: 0 10px 0 0;
@@ -255,8 +277,13 @@ body {
     height: 50px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
+    transition: background var(--animation), 
+    box-shadow var(--animation);
 }
-
+.modal-btn:hover,
+.modal-btn:focus {
+    background: #188ce8;
+}
 /*===AND HERO===*/
 
 /*===DESCRIPTION===*/
@@ -409,6 +436,7 @@ body {
     border-radius: 50%;
     fill: currentColor;
     color: var(--description-color);
+    transition: background-color var(--animation), fill var(--animation);
 }
 .social-list-link:hover,
 .social-list-link:focus {
@@ -440,7 +468,7 @@ body {
     color: var(--description-color);
     border: 1px solid #afb1b8;
     border-radius: 4px;
-    
+    transition: fill var(--animation), border-color var(--animation);
 }
 .clients-link:hover,
 .clients-link:focus {
@@ -490,7 +518,7 @@ body {
     font-size: 14px;
     line-height: 1.71;
     letter-spacing: 0.03em;
-    
+    transition: color var(--animation);
 }
 .addres{
     color: var(--secondary-color);
@@ -538,6 +566,7 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     fill: var(--secondary-color);
     color: var(--contrast-color);
+    transition: background-color var(--animation);
 }
 .social-list-link-footer:hover,
 .social-list-link-footer:focus {
@@ -576,7 +605,7 @@ body {
     letter-spacing: 0.03em;
     background: var(--our-team-color);
     border-radius: 4px;
-
+    transition: background var(--animation), box-shadow var(--animation), color var(--animation);
 }
 .menu-btn:hover,
 .menu-btn:focus{
@@ -605,6 +634,7 @@ body {
 }
 .portfolio-list-link{
     display: block;
+    transition: background var(--animation), box-shadow var(--animation);
 }
 .portfolio-list-link:hover,
 .portfolio-list-link:focus {
@@ -614,6 +644,34 @@ body {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+.portfolio-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.label-portfolio-text {
+    font-size: 18px;
+    line-height: 1.56;
+    background-color: var(--label-background-color);
+    letter-spacing: 0.03em;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: translateY(101%);
+    transition: transform var(--animation);
+    padding: 63px 24px;
+}
+.portfolio-list-link:hover .label-portfolio-text,
+.portfolio-list-link:focus .label-portfolio-text {
+    transform: translateY(0%);
+}
+/*.portfolio-wrapper:hover .label-portfolio-text,
+.portfolio-wrapper:focus .label-portfolio-text {
+    transform: translateY(0%);
+}*/
 .menu-item{
     padding: 20px 24px;
     border-left: 1px solid var(--border-color);
@@ -635,3 +693,47 @@ body {
     color: var(--p-text-color);
 }
 /*=====AND PORTFOLIO=====*/
+
+/* ======MODELNE WINDOW======*/
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: opacity var(--animation), visibility var(--animation);
+}
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 528px;
+    height: 580px;
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+.icon-close {
+    display: block;
+    margin: 0 auto;
+}
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}

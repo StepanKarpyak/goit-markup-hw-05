@@ -11,8 +11,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+        integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/styles.css">
 
 </head>
@@ -25,7 +26,7 @@
         <header class="header">
             <div class="conteiner header-conteiner">
                 <nav class="navigation">
-                    <a class="logo link" lang="en" href="./"><span class="link logo-blue">Web</span>Studio</a>
+                    <a class="logo link" lang="en" href=""><span class="link logo-blue">Web</span>Studio</a>
                     <ul class="menu list">
                         <li class="nav-item">
                             <a class="link menu-link current" href="">Студия</a>
@@ -56,7 +57,7 @@
             <section class="hero">
                 <div class="conteiner">
                     <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-                    <button class="btn modal-btn" type="submit">Заказать услугу</button>
+                    <button class="btn modal-btn" type="button" data-modal-open>Заказать услугу</button>
                 </div>
             </section>
             <!-- ABOUT -->
@@ -404,6 +405,16 @@
             </div>
         </footer>
     </main>
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button class="close-btn" type="button" data-modal-close>
+                <svg class="icon-close" width="11" height="11">
+                    <use href="./imiges/svg/sprite.svg#icon-closed"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <script src="./js/modal.js"></script>
 </body>
 
 </html>
